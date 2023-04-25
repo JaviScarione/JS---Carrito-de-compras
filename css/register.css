@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+  }
+  
+  .logonContainer { 
+    width: 320px;
+    height: 600px; 
+    background: #505050;
+    color: white;
+    padding: 70px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 100px 50px grey;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin-top: -175px;
+    left: calc(50% - 50px);
+    filter: invert(59%) sepia(41%) saturate(2041%) hue-rotate(359deg) brightness(98%) contrast(100%);
+  }
+  
+  .logonContainer h1 {
+    margin: -15px 0 25px 0;
+    font-size: 22px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+  }
+  
+  label {
+    font-size: 18px;  
+  }
+
+  .remember {
+    font-size: 14px;
+  }
+  
+  input {
+    width: 100%;
+    margin-bottom: 25px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fa9102;
+    outline: none;
+    height: 25px;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .btn {
+    border: none;
+    outline: none;
+    background: #fa9102;
+    color: #505050;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 5px;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .btn:hover {
+    background: #fa9102;
+    color: white;
+    box-shadow: 0 0 15px whitesmoke;
+  }
+
+  #message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+    transition: all 300ms ease-in-out;
+  }
+  
+  a:hover {
+    color: #fa9102;
+  }
+  
+  .register {
+    margin-top: 5px;
+  }

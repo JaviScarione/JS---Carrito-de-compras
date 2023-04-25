@@ -1,0 +1,175 @@
+body {
+  background: darkgrey;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 5px 5px grey;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+}
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fa9102;
+    outline: none;
+    color: white;
+    font-size: 16px;
+  }
+
+.container-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 100px;
+}
+
+.cart{
+    color: white;
+    position: absolute;
+    cursor: pointer;
+    font-size: 25px;
+    transition: all 300ms ease-in-out;
+}
+
+.cart:hover {
+  color: #fa9102;
+}
+
+.count {
+  padding: 10px;
+  background-color: #fa9102;
+  color: white;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+  font-size: 14px;
+  position: relative;
+  top: -30%;
+  left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exit {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.exit:hover {
+  color: #fa9102;
+}
+
+.exit-icon {
+  font-size: 25px;
+}
+
+.card {
+  width: 100%;
+  height: 550px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card:hover {
+  scale: 1.01;
+}
+
+.productLink {
+  text-decoration: none;
+}
+
+.img-product {
+  height: 50%;
+}
+
+.addItem {
+  color: white;
+  background: #fa9102;
+}
+
+.addItem:hover {
+  background: white;
+  border: 2px solid #fa9102;
+  color: #505050;
+  box-shadow: 0 0 10px #505050;
+}
+
+ul {
+  font-size: x-large;
+}
+
+li:hover {
+  scale: 1.2;
+  transition: all 200ms ease-in-out;
+}
+
+@media screen and (max-width: 991px) and (min-width: 767px) {
+  #list {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .header {
+    height: 150px;
+  }
+
+  .logo {
+    width: 15vw;
+    height: 15vw;
+}
+
+  input {
+    width: 150px;
+    font-size: 12px;
+  }
+
+  .count {
+    font-size: 10px;
+  }
+
+  .navbar-brand{
+    width: 100%;
+    margin: 0 0 30px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container-cart {
+    margin: 0;
+  }
+
+  .cart, .exit-icon {
+    font-size: 18px;
+  }
+
+  .alter {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+ }
