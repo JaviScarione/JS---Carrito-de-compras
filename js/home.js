@@ -1,6 +1,6 @@
 const inputSearch = document.querySelector("#productSearch"),
     productsList = document.getElementById("list"),
-    footer = document.querySelector("#footer"),
+    footer = document.querySelector("#footer");
     products = [
     {
         id: 1,
@@ -88,38 +88,53 @@ const inputSearch = document.querySelector("#productSearch"),
     }
 ]
 
+function saveProductsLocalStorage(arr) {
+    localStorage.setItem("products", JSON.stringify(arr));
+}
+saveProductsLocalStorage(products);
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+localStorage.setItem("cart", JSON.stringify(cart));
+
 function renderProducts (arr) {
     productsList.innerHTML = "";
     for (const product of arr) {
         let div = document.createElement("div");    
         div.innerHTML =
-        `<a class="productLink" href="./home.html" alt ="Producto ${product.id}" id ="${product.id - 1}">
-            <div class="card">
+        `<div class="card" id="${product.id}">
             <img src=${product.img} alt=${product.id} class="card-img-top img-product">
             <div>
-                <h6 class = "ps-4 ">${product.nombre}</h6>
-                <div class = "d-flex align-items-center justify-content-between px-4 mb-5 mt-5">
-                    <h5 class = "mb-0">$${product.precio}</h5>  
-                    <button type="submit" class="btn addItem" id="addItem">Agregar</button>
+                <h6>${product.nombre}</h6>
+                <div class = "d-flex align-items-center justify-content-between itemFooter">
+                    <h5>$ ${product.precio}</h5>  
+                    <button type="submit" class="btn viewItem" id="${product.id}">Ver</button>
                 </div>   
             </div>
-        </div>
-        </a>`;
-        div.classList =  "col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 item"   
+        </div>`
+        div.classList =  "col-6 col-md-5 col-lg-4 col-xl-3"   
         productsList.appendChild(div);
     }
 }
 
 renderProducts(products);
 
-function searchProducst (arr, filter) {
+const viewItem = [...document.getElementsByClassName("card")];
+
+viewItem.forEach((el) => {
+    el.addEventListener('click', () => {
+      const id = el.id;
+      localStorage.setItem("id", id);
+      window.location.href = "./itemDetail.html";
+    });
+  });
+
+function searchProducts (arr, filter) {
     const filterProducts = arr.filter((el) => {
         return el.nombre.toLowerCase().includes(filter);
     });
     return filterProducts;
 }
 
-inputSearch.addEventListener('input', () => {
-    let filterProducts = searchProducst(products, inputSearch.value.toLowerCase())
+inputSearch.addEventListener("input", () => {
+    let filterProducts = searchProducts(products, inputSearch.value.toLowerCase())
     filterProducts.length > 0 ? (renderProducts(filterProducts, footer.style.display = 'block')) : (footer.style.display = 'none', productsList.innerHTML = `<h2 class = "text-center">No se encontraron productos.</h2>`);    
 });

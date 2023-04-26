@@ -4,8 +4,7 @@ const registerForm = document.querySelector("#registerForm"),
   email = document.querySelector("#email"),
   password = document.querySelector("#password"),
   remember = document.querySelector("#remember"),
-  message = document.querySelector("#message"),
-  btnRegister = document.querySelector("#register");
+  message = document.querySelector("#message");
 
 let SessionUsers = JSON.parse(sessionStorage.getItem("users")) || [];
 let LocalUsers = JSON.parse(localStorage.getItem("users")) || [];
@@ -39,13 +38,13 @@ registerForm.addEventListener("submit", (e) => {
     email.value,
     password.value
   );
-let LuserFound = LocalUsers.find((user) => {
+let LocalUserFound = LocalUsers.find((user) => {
   return user.userName == userName.value || user.email == email.value;
 })
-let SuserFound = SessionUsers.find((user) => {
+let SessionUserFound = SessionUsers.find((user) => {
   return user.userName == userName.value || user.email == email.value;
 })
-if (LuserFound || SuserFound) {
+if (LocalUserFound || SessionUserFound) {
   message.innerText = "Usuario ya registrado."; 
 }else {
   if (remember.checked) {

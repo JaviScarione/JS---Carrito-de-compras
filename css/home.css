@@ -95,20 +95,25 @@ input {
   scale: 1.01;
 }
 
-.productLink {
-  text-decoration: none;
+.card h6, .card .itemFooter {
+  padding: 0 24px;
 }
 
 .img-product {
   height: 50%;
 }
 
-.addItem {
-  color: white;
-  background: #fa9102;
+.itemFooter {
+  margin: 48px 0;
 }
 
-.addItem:hover {
+.viewItem {
+  color: white;
+  background: #fa9102;
+  width: 40%;
+}
+
+.viewItem:hover {
   background: white;
   border: 2px solid #fa9102;
   color: #505050;
@@ -162,6 +167,31 @@ li:hover {
 
   .cart, .exit-icon {
     font-size: 18px;
+  }
+
+  .card {
+    width: 100%;
+    height: 270px;
+  }
+
+  .card h6 {
+    padding:  0 12px;
+    font-size: 11px;
+  }
+
+  .card h5 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .card .itemFooter {
+    margin: 0;
+    padding: 12px;
+  }
+
+  .viewItem {
+    width: 40%;
+    font-size: 8px;
   }
 
   .alter {
