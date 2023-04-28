@@ -16,8 +16,17 @@ body {
 }
 
 .logo {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
+}
+
+input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fa9102;
+  color: white;
+  outline: none;
+  opacity: 0.7;
 }
 
 .container-cart {
@@ -75,11 +84,10 @@ body {
 }
 
 .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
 }
 
 .card {
@@ -93,19 +101,21 @@ body {
     color: #505050;
 }
 
-.card .row {
+.card .rowItem {
+    display: flex;
+    flex-direction: row;
     margin: 0;
-    padding: 0;
+    padding: 30px;
     width: 100%;
     height: 498px;
 }
 
 .imgDetailContainer {
   width: 50%;
-  height: 100%;
+  height: 95%;
   display: flex;
   justify-content: center;
-  border-right: 1px dashed #cfcfcf;
+  border-right: 1px inset #505050;
 }
 
 .card-img {
@@ -115,13 +125,17 @@ body {
   }
 
 .description {
-    padding: 80px 30px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     height: 100%;
     align-items: start;
-    justify-content: space-around;
+    justify-content :space-between;
     text-align: start;
+}
+
+.description .price {
+  font-weight: bold;
 }
 
 .counter {
@@ -154,7 +168,7 @@ body {
 }
 
 .add {
-    margin-left: 30%;
+    margin-left: auto;
     color: white;
     background: #fa9102;
     width: 40%;
@@ -169,22 +183,19 @@ body {
   }
 
   .return {
-    width: 35px;
-    height: 35px;
-    font-size: 15px;
-    text-align: center;
-    border-radius: 100%;
+    margin-left: auto;
+    position: relative;
+    top: 20px;
+    right: 0px;
+    font-size: 30px;
+    border-radius: 5px;
     border: none;
-    color: white;
-    background: #fa9102;
+    color: #505050;
     transition: all 300ms ease-in-out;
   }
   
   .return:hover {
-    background: white;
-    border: 2px solid #fa9102;
-    color: #505050;
-    box-shadow: 0 0 10px #505050;
+    color: #fa9102;
   }
 
   .return i {
@@ -192,15 +203,6 @@ body {
     justify-content: center;
     align-items: center;
   }
-
-
-
-
-
-
-
-
-
 
 ul {
     font-size: x-large;
@@ -211,42 +213,185 @@ li:hover {
     transition: all 200ms ease-in-out;
 }
   
-  /*@media screen and (max-width: 991px) and (min-width: 767px) {
-    #list {
-      justify-content: center;
-    }
-  }*/
-  
-  @media screen and (max-width: 575px) {
-    .header {
-      height: 150px;
-    }
-  
-    .logo {
-      width: 15vw;
-      height: 15vw;
+@media screen and (max-width: 575px) {
+  .header {
+    height: 150px;
   }
 
-    .count {
-      font-size: 10px;
-    }
-  
-    .navbar-brand{
-      width: 100%;
-      margin: 0 0 30px 0;
-      display: flex;
-      justify-content: center;
-    }
-  
-    .container-cart {
-      margin: 0;
-    }
-  
-    .cart, .exit-icon {
-      font-size: 18px;
-    }
-  
-    footer {
-      font-size: 12px;
-    }
-   }
+  .logo {
+    width: 12vw;
+    height: 12vw;
+}
+
+  input {
+    width: 150px;
+    font-size: 12px;
+  }
+
+  .count {
+    font-size: 10px;
+  }
+
+  .navbar-brand{
+    width: 100%;
+    margin: 0 0 30px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container-cart {
+    margin: 0;
+  }
+
+  .cart, .exit-icon {
+    font-size: 18px;
+  }
+
+  .content {
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    height: 455px;
+  }
+
+  .imgDetailContainer {
+    width: 100%;
+    height: 40%;
+    padding-top: 20px;
+    border: none;
+  }
+
+  .card .rowItem{
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .description {
+    padding: 10px;
+  }
+
+  .description h4 {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .counter {
+    margin-top: 50px;
+  }
+
+  .counter div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 15px;
+  }
+
+  .CounterButton {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add {
+    margin-right: 15px;
+    font-size: 11px;
+  }
+
+  .return {
+    margin-left: auto;
+    position: relative;
+    top: 45px;
+    right: 0px;
+    font-size: 25px;
+  }
+
+  #quantity {
+    font-size: 12px;
+  }
+
+  .alter {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+ }
+
+ @media screen and (max-width: 767px) and (min-width: 576px) {
+  .content {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    height: 70%;
+  }
+
+  .imgDetailContainer {
+    width: 100%;
+    height: 40%;
+    padding-top: 20px;
+    border: none;
+  }
+
+  .card .rowItem{
+    flex-direction: column;
+  }
+
+  .description {
+    padding: 20px;
+  }
+
+  .description h4 {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .counter {
+    margin-top: 30px;
+  }
+
+  .counter div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 15px;
+  }
+
+  .CounterButton {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add {
+    margin-right: 15px;
+    font-size: 13px;
+  }
+
+  .return {
+    margin-left: auto;
+    position: relative;
+    top: 30px;
+    right: 0px;
+    font-size: 25px;
+  }
+
+  #quantity {
+    font-size: 13px;
+  }
+
+ }

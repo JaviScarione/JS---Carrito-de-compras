@@ -91,7 +91,9 @@ const inputSearch = document.querySelector("#productSearch"),
 function saveProductsLocalStorage(arr) {
     localStorage.setItem("products", JSON.stringify(arr));
 }
+
 saveProductsLocalStorage(products);
+
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 localStorage.setItem("cart", JSON.stringify(cart));
 
@@ -113,19 +115,17 @@ function renderProducts (arr) {
         div.classList =  "col-6 col-md-5 col-lg-4 col-xl-3"   
         productsList.appendChild(div);
     }
-}
-
-renderProducts(products);
-
-const viewItem = [...document.getElementsByClassName("card")];
-
-viewItem.forEach((el) => {
+    const viewItem = [...document.getElementsByClassName("card")];
+    viewItem.forEach((el) => {
     el.addEventListener('click', () => {
       const id = el.id;
       localStorage.setItem("id", id);
       window.location.href = "./itemDetail.html";
     });
   });
+}
+
+renderProducts(products);
 
 function searchProducts (arr, filter) {
     const filterProducts = arr.filter((el) => {

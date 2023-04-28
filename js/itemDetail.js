@@ -13,26 +13,27 @@ class itemCart {
   }
 
 function renderProduct (item) {
-    div.innerHTML = "";
     div.innerHTML =
     `<div class="card">
-        <div class="row">
+        <button class="btn return" type="button" id="return"><i class="bi bi-x"></i></button>
+        <div class="rowItem">
             <div class="col-md-6 imgDetailContainer">
                 <img src=${item.img} class="card-img" alt="Imagen Producto">
             </div>
-        <div class="col-md-6">
-        <div class="description">
-            <button class="btn return" type="button" id="return"><i class="bi bi-arrow-left"></i></button>
-                <h4>${item.nombre} </h4>
-                <h4>$ ${item.precio}</h4>
-                <p>Stock: ${item.stock} unidades.</p>
-                <div class="counter">
-                    <div>
-                        <button class="CounterButton" type="button" id="res">-</button>
-                        <label for="count" id="quantity" class =" text-center">1</label>
-                        <button class="CounterButton" type="button" id="sum">+</button>
+            <div class="col-md-6">
+                <div class="description">
+                    
+                    <h4>${item.nombre} </h4>
+                    <h4 class ="price">$ ${item.precio}</h4>
+                    <p>Stock: ${item.stock} unidades.</p>
+                    <div class="counter">
+                        <div>
+                            <button class="CounterButton" type="button" id="res">-</button>
+                            <label for="count" id="quantity" class =" text-center">1</label>
+                            <button class="CounterButton" type="button" id="sum">+</button>
                         </div>
-                    <button type="submit" class="btn add" id="add">Agregar al Carrito</button>
+                        <button type="submit" class="btn add" id="add">Agregar al Carrito</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,17 +46,23 @@ function loadID () {
 }
 
 function searchProduct (arr, id) {
-    const filterProduct = arr.find((el) => {
+    const findProduct = arr.find((el) => {
         return el.id == id;
     });
-    return filterProduct;
+    return findProduct;
+}
+
+function addItem(arr, item) {
+    return arr.push(item);
+}
+
+function saveLocalStorage(arr) {
+    return localStorage.setItem("cart", JSON.stringify(arr));
 }
 
 const ID = loadID();
 const item = searchProduct(products, ID);
-
 renderProduct(item);
-
 
 const back = document.querySelector("#return"),
 sum = document.querySelector("#sum"),
@@ -78,14 +85,6 @@ res.addEventListener("click", () => {
     q > 1 ? q-- :  "";
     quantity.innerText = q;    
 });
-
-function addItem(arr, item) {
-    return arr.push(item);
-}
-
-function saveLocalStorage(arr) {
-    return localStorage.setItem("cart", JSON.stringify(arr));
-  }
 
 add.addEventListener("click", () => {
     const ItemFound = cartLocalStorage.find((itemCart) => {
