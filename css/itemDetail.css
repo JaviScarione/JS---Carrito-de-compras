@@ -87,12 +87,12 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  min-height: calc(100vh - (120px + 100px));
 }
 
 .card {
     width: 100%;
-    height: 500px;
+    height: 80%;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -107,7 +107,7 @@ input {
     margin: 0;
     padding: 30px;
     width: 100%;
-    height: 498px;
+    height: 80%;
 }
 
 .imgDetailContainer {
@@ -185,7 +185,7 @@ input {
   .return {
     margin-left: auto;
     position: relative;
-    top: 20px;
+    top: 10px;
     right: 0px;
     font-size: 30px;
     border-radius: 5px;
@@ -202,6 +202,10 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  footer {
+    height: 100px;
   }
 
 ul {
@@ -248,12 +252,15 @@ li:hover {
   }
 
   .content {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    max-height: calc(100vh - (150px + 70px));
   }
 
   .card {
     width: 100%;
-    height: 455px;
+    height: 80%;
   }
 
   .imgDetailContainer {
@@ -304,11 +311,7 @@ li:hover {
   }
 
   .return {
-    margin-left: auto;
-    position: relative;
-    top: 45px;
-    right: 0px;
-    font-size: 25px;
+    font-size: 20px;
   }
 
   #quantity {
@@ -321,15 +324,17 @@ li:hover {
   }
 
   footer {
-    font-size: 12px;
+    font-size: 10px;
+    height: 70px;
+    justify-content: center;
   }
+
+  ul {
+    font-size: medium;
+}
  }
 
  @media screen and (max-width: 767px) and (min-width: 576px) {
-  .content {
-    margin: 0;
-    justify-content: center;
-  }
 
   .card {
     width: 100%;
@@ -382,16 +387,11 @@ li:hover {
     font-size: 13px;
   }
 
-  .return {
-    margin-left: auto;
-    position: relative;
-    top: 30px;
-    right: 0px;
-    font-size: 25px;
-  }
-
   #quantity {
     font-size: 13px;
   }
 
+  ul {
+    font-size: large;
+}
  }
