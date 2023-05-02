@@ -1,7 +1,13 @@
 const div = document.querySelector("#item"),
 products = JSON.parse(localStorage.getItem("products"));
 
-let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
+function loadUser () {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user;
+}
+const user = loadUser();
+
+let cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
 
 class itemCart {
     constructor(id, nombre, precio, cantidad) {
@@ -37,12 +43,12 @@ function renderProduct (item) {
                 </div>
             </div>
         </div>
-    </div>`
+    </div>`;
 }
 
 function loadID () {
-    const ID = JSON.parse(localStorage.getItem("id"));
-    return ID;
+    const id = JSON.parse(localStorage.getItem("id"));
+    return id;
 }
 
 function searchProduct (arr, id) {
@@ -60,8 +66,8 @@ function saveLocalStorage(arr) {
     return localStorage.setItem("cart", JSON.stringify(arr));
 }
 
-const ID = loadID();
-const item = searchProduct(products, ID);
+const id = loadID();
+const item = searchProduct(products, id);
 renderProduct(item);
 
 const back = document.querySelector("#return"),

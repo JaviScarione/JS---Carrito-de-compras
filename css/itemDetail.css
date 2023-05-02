@@ -105,7 +105,7 @@ input {
     display: flex;
     flex-direction: row;
     margin: 0;
-    padding: 30px;
+    padding: 10px 30px;
     width: 100%;
     height: 80%;
 }
@@ -216,6 +216,8 @@ li:hover {
     scale: 1.2;
     transition: all 200ms ease-in-out;
 }
+
+
   
 @media screen and (max-width: 575px) {
   .header {
@@ -252,27 +254,19 @@ li:hover {
   }
 
   .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     max-height: calc(100vh - (150px + 70px));
   }
 
-  .card {
-    width: 100%;
-    height: 80%;
-  }
-
   .imgDetailContainer {
-    width: 100%;
-    height: 40%;
-    padding-top: 20px;
+    align-self: center;
+    width: 50%;
+    height: 100%;
     border: none;
   }
 
   .card .rowItem{
     flex-direction: column;
-    padding: 0;
+    padding:  0 10px;
   }
 
   .description {
@@ -280,33 +274,25 @@ li:hover {
   }
 
   .description h4 {
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 30px;
   }
 
   .counter {
-    margin-top: 50px;
+    margin: 20px 0 10px;
   }
 
   .counter div {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
+    width: 50%;  
     margin-left: 15px;
   }
 
   .CounterButton {
     width: 25px;
     height: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
   }
 
   .add {
-    margin-right: 15px;
     font-size: 11px;
   }
 
@@ -333,6 +319,8 @@ li:hover {
     font-size: medium;
 }
  }
+
+
 
  @media screen and (max-width: 767px) and (min-width: 576px) {
 

@@ -14,7 +14,7 @@ function logIn (users) {
     let userFound = users.find((user) => {
         return user.userName.toLowerCase() === loginUser.value.toLowerCase() && user.password === loginPassword.value;
     })
-    userFound ? window.location.href = "./home.html" : message.innerText = "Usuario no encontrado.";
+    userFound ? (localStorage.setItem("user", JSON.stringify({"userName" : userFound.userName})), window.location.href = "./home.html") : message.innerText = "Usuario no encontrado.";
     tries < 3 ? tries ++ : (submit.disabled = true, message.innerText = "Por favor regístrese.");
 };        
 
