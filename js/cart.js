@@ -103,7 +103,9 @@ clear.addEventListener("click", () => {  //Vaciar el carrito
     cancelButtonColor: '#fa9102',
     confirmButtonText: 'Si, vaciar el carrito!'
   }).then((result) => {
-    if (result.isConfirmed) {          
+    if (result.isConfirmed) {        
+      cart=[];
+      saveLocalStorage(cart);
       Swal.fire({
         title: 'Carrito vaciado!',
         text: "Serás redirigido a la página de inicio.",
@@ -113,8 +115,6 @@ clear.addEventListener("click", () => {  //Vaciar el carrito
         confirmButtonText: 'Ok'
       }).then((result) => {
         if (result.isConfirmed) {
-          cart=[],
-          saveLocalStorage(cart),
           window.location.href = "./home.html"
         }
       })
