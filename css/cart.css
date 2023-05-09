@@ -83,6 +83,11 @@ body {
     font-size: 25px;
   }
 
+  .logIn {
+    text-decoration: none;
+    color: #fa9102;
+  }
+
   .card {
     display: flex;
     flex-direction: column;

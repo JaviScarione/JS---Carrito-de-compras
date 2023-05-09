@@ -1,11 +1,25 @@
-const div = document.querySelector("#item"),
+const Item = document.querySelector("#item"),
 count = document.querySelector("#count"),
 cartLink = document.querySelector("#cart"),
-products = JSON.parse(localStorage.getItem("products"));
+exit = document.querySelector("#exit");
 
 let item;
 
 const actualUser = JSON.parse(localStorage.getItem("actualUser"));  //Recuperamos el usuario actual
+
+if (!actualUser) {
+    Swal.fire({
+    title: 'No has iniciado sesión!',
+    icon: 'error',
+    showCancelButton: false,
+    confirmButtonColor: '#96c93d',
+    confirmButtonText: 'Iniciar Sesión'
+}).then((result) => {
+    if (result.isConfirmed) {
+    window.location.href = "./index.html"
+    }
+});
+}else {
 
 let cart = JSON.parse(localStorage.getItem(`${actualUser.userName}-cart`)) || [];  //Recuperamos el carrito del usuario actual, sino creamos un carrito vacio
 
@@ -59,7 +73,7 @@ function saveLocalStorage(arr) {  //Guardamos el carrito en LocalStorage
 }
 
 function renderProduct (item) {  //Renderizamos el producto
-    div.innerHTML =
+    Item.innerHTML =
     `<div class="card">
         <button class="btn return" type="button" id="return"><i class="bi bi-x"></i></button>
         <div class="rowItem">
@@ -191,3 +205,11 @@ function loadID () {  //Funcion para obtener el ID del producto enviado desde el
 
 const id = loadID();  //Recuperamos el ID del producto a visualizar
 loadProduct(id);  //Obtenemos el producto con el ID anterior
+
+exit.addEventListener("click", () => {  //Vaciamos el LocalStorage
+    localStorage.removeItem("actualUser");
+    localStorage.removeItem("id");
+    cart.length == 0 && localStorage.removeItem(`${actualUser.userName}-cart`);  //Si hay carrito, queda almacenado, sino se elimina
+    window.location.href = "./index.html";
+})
+}

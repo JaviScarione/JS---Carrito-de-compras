@@ -1,4 +1,5 @@
 const inputSearch = document.querySelector("#productSearch"),
+    exit = document.querySelector("#exit"),
     productsList = document.getElementById("list"),
     cartLink = document.querySelector("#cart"),
     count =document.querySelector("#count"),
@@ -6,6 +7,22 @@ const inputSearch = document.querySelector("#productSearch"),
 
 
 let actualUser = JSON.parse(localStorage.getItem("actualUser"));  //Recuperamos los datos del usuario actual
+
+if (!actualUser) {
+    productsList.innerHTML = `<h2 class = "text-center">No estas logueado.</h2><a href="./index.html" class="logIn"><h2 class = "text-center">Loguearse</h2></<a>`;
+    Swal.fire({
+        title: 'No has iniciado sesión!',
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#96c93d',
+        confirmButtonText: 'Iniciar Sesión'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        window.location.href = "./index.html"
+        }
+    });
+}else {
+
 
 let cart = JSON.parse(localStorage.getItem(`${actualUser.userName}-cart`));  //Recuperamos el carrito del usuario actual, sino creamos un carrito vacio
 
@@ -43,10 +60,6 @@ function renderProducts (arr) {  //Renderizamos todos los productos que lleguen 
   });
 }
 
-function saveProductsLocalStorage(arr) { //Almacenamos en LocalStorage todos los productos 
-    localStorage.setItem("products", JSON.stringify(arr));
-}
-
 function searchProducts (arr, filter) {  //Funcion para filtrar en base a un array de productos y un filtro que se aplica en el nombre del producto
     const filterProducts = arr.filter((el) => {
         return el.nombre.toLowerCase().includes(filter);
@@ -60,7 +73,6 @@ function loadProducts(filter){  //Carga asincronica de todos los productos o de 
         .then((res) => res.json())
         .then(products => {
             renderProducts(products);
-            saveProductsLocalStorage(products)
         })
     }else {
         fetch("./bdd/products.json")
@@ -101,3 +113,11 @@ cartLink.addEventListener("click", () => {  //Si no hay productos en el carrito,
 inputSearch.addEventListener("input", () => {  //Capturamos lo que ingresa el usuario para hacer el filtro asincronico
     loadProducts(inputSearch.value.toLowerCase())
 });
+
+exit.addEventListener("click", () => {  //Vaciamos el LocalStorage
+    localStorage.removeItem("actualUser");
+    localStorage.removeItem("id");
+    cart.length == 0 && localStorage.removeItem(`${actualUser.userName}-cart`);  //Si hay carrito, queda almacenado, sino se elimina
+    window.location.href = "./index.html";
+})
+}

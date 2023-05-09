@@ -1,4 +1,5 @@
 const count = document.querySelector("#count"),
+exit = document.querySelector("#exit"),
 cartList = document.querySelector("#cartList"),
 back = document.querySelector("#back"),
 clear = document.querySelector("#clear"),
@@ -8,17 +9,32 @@ finish = document.querySelector("#finish");
 let itemsQuantity, Total;
 let actualUser = JSON.parse(localStorage.getItem("actualUser"));  //Recuperamos el usuario actual
 
+if (!actualUser) {
+  cartList.innerHTML = `<h2 class = "text-center">No estas logueado.</h2><a href="./index.html" class="logIn"><h2 class = "text-center">Loguearse</h2></<a>`;
+  Swal.fire({
+    title: 'No has iniciado sesión!',
+    icon: 'error',
+    showCancelButton: false,
+    confirmButtonColor: '#96c93d',
+    confirmButtonText: 'Iniciar Sesión'
+}).then((result) => {
+    if (result.isConfirmed) {
+    window.location.href = "./index.html"
+    }
+});
+}else {
+
 function getCart () {  //Funcion para recuperar  lo que hay en el carrito del usuario
     let Cart = JSON.parse(localStorage.getItem(`${actualUser.userName}-cart`));
     return Cart;
 }
 let cart = getCart(); //Recuperamos lo que hay en el carrito
 
-function ItemsQuantity () {  //Funcion para obtener la cantidad total de items para mostrar la notificacion en el header, en este punto hay contenido si o si
+function ItemsQuantity () {  //Funcion para obtener la cantidad total de items para mostrar la notificacion en el header
   itemsQuantity = cart.reduce((acc, prod) => {
     return acc += parseInt(prod.cantidad);
   }, 0);
-  count.innerText = itemsQuantity;
+  itemsQuantity > 0 && (count.removeAttribute("hidden"), count.innerHTML = itemsQuantity);
 }
 ItemsQuantity();
 
@@ -134,3 +150,11 @@ finish.addEventListener("click", () => {  //Finalización de compra
     }
   })
 })
+
+exit.addEventListener("click", () => {  //Vaciamos el LocalStorage
+  localStorage.removeItem("actualUser");
+  localStorage.removeItem("id");
+  cart.length == 0 && localStorage.removeItem(`${actualUser.userName}-cart`);  //Si hay carrito, queda almacenado, sino se elimina
+  window.location.href = "./index.html";
+})
+}
